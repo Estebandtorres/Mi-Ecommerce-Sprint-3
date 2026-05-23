@@ -1,0 +1,64 @@
+<link rel="stylesheet" href="/css/style.css">
+<header class="nave">
+    <div class="centro">
+        <div class="logo">
+            <img src="/img/logo.jpeg" alt="logo">
+        </div>
+
+        <div class="barra">
+            <form class=" barra" type="submit" action="/searchResults" method="GET">
+                <input type="text" name="query" placeholder="Buscar productos..." required>
+            </form>
+        </div>
+    </div>
+
+    <div class="iconos">
+        <div class="icono">
+            <a href="perfil.html"><button class="boton"><img src="/img/usuario.png" width="30px"
+                        height="30px"></button></a>
+        </div>
+        <div class="icono">
+            <a href="/carrito"><button class="boton"><img src="/img/carrito-de-compras.png" width="30px"
+                        height="30px"></button></a>
+        </div>
+    </div>
+</header>
+<%- include('../partials/header') %>
+
+
+    <h1>Resultados para: "<%= query %>"</h1>
+
+    <% if(resultados.length> 0) { %>
+
+        <div style="display:flex; flex-wrap:wrap; gap:20px;">
+
+            <% resultados.forEach(producto=> { %>
+
+                <a class="link" href="/products/<%= producto.id %>">
+
+                    <section class="tarjeta">
+
+                        <h2>
+                            <%= producto.nombre %>
+                        </h2>
+
+                        <img src="<%= producto.imagen %>" alt="<%= producto.nombre %>">
+
+                        <li>$ <%= producto.precio %>
+                        </li>
+
+                    </section>
+
+                </a>
+
+                <% }) %>
+
+        </div>
+
+        <% } else { %>
+
+            <h2>No se encontraron productos.</h2>
+
+            <% } %>
+
+                <%- include('../partials/footer') %>

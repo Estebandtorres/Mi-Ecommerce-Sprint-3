@@ -1,0 +1,259 @@
+<link rel="stylesheet" href="/css/style.css">
+<header class="nave">
+    <div class="centro">
+        <div class="logo">
+            <img src="/img/logo.jpeg" alt="logo">
+        </div>
+
+        <div class="barra">
+            <form class=" barra" type="submit" action="/searchResults" method="GET">
+                <input type="text" name="query" placeholder="Buscar productos..." required>
+            </form>
+        </div>
+    </div>
+
+    <div class="iconos">
+        <div class="icono">
+            <a href="perfil.html"><button class="boton"><img src="/img/usuario.png" width="30px"
+                        height="30px"></button></a>
+        </div>
+        <div class="icono">
+            <a href="/carrito"><button class="boton"><img src="/img/carrito-de-compras.png" width="30px"
+                        height="30px"></button></a>
+        </div>
+    </div>
+</header>
+<%- include('../partials/header') %>
+
+  <main class="contenedor">
+
+    <h2 class="Titulos1">Te puede interesar</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-bottom: 30px; width: 100%;">
+      <% if (typeof sugeridos !=='undefined' && sugeridos.length> 0) { %>
+        <% sugeridos.forEach(producto=> { %>
+          <a class="link" href="/products/<%= producto.id %>">
+            <section class="tarjeta">
+              <h2>
+                <%= producto.nombre %>
+              </h2>
+              <ul>
+                <img src="<%= producto.imagen ? producto.imagen : 'https://placehold.co/300x300?text=Sin+Imagen' %>"
+                  alt="<%= producto.nombre %>">
+                <li>$ <%= producto.precio %>
+                </li>
+                <li>Los productos personalizados no están sujetos a cambios y/o devoluciones.</li>
+              </ul>
+            </section>
+          </a>
+          <% }) %>
+            <% } %>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-bottom: 30px; width: 100%;">
+    </div>
+    <h2 class="Titulos1">Camisetas</h2>
+    </div>
+    <a class="link" href="/products/1">
+      <section class="tarjeta">
+        <h2>Camiseta de Boca Juniors</h2>
+        <ul>
+          <img src="/img/boquita.jpg" alt="">
+          <li>$ 149.999</li>
+          <li>Los productos personalizados no están sujetos a cambios y/o devoluciones.</li>
+        </ul>
+      </section>
+    </a>
+
+    <a class="link" href="/products/2">
+      <section class="tarjeta">
+        <h2>Camiseta de river Plate</h2>
+        <img src="/img/river.jpg" alt="">
+        <li>$ 149.999</li>
+        <li>Los productos personalizados no están sujetos a cambios y/o devoluciones.</li>
+      </section>
+    </a>
+
+    <a class="link" href="/products/3">
+      <section class="tarjeta">
+        <h2>Camiseta de la Seleccion Argentina</h2>
+        <ul>
+          <img src="/img/seleccion.jpg" alt="">
+          <li>$ 149.999</li>
+          <li>Los productos personalizados no están sujetos a cambios y/o devoluciones.</li>
+        </ul>
+      </section>
+    </a>
+
+    <a class="link" href="/products/4">
+      <section class="tarjeta">
+        <h2>Camiseta de Rosario central</h2>
+        <ul>
+          <img src="/img/central.jpg" alt="">
+          <li>$ 149.999</li>
+          <li>Los productos personalizados no están sujetos a cambios y/o devoluciones.</li>
+        </ul>
+      </section>
+    </a>
+
+    <a class="link" href="/products/5">
+      <section class="tarjeta">
+        <h2>Camiseta de San Lorenzo</h2>
+        <ul>
+          <img src="/img/sanlorenzo.jpg" alt="">
+          <li>$ 149.999</li>
+          <li>Los productos personalizados no están sujetos a cambios y/o devoluciones.</li>
+        </ul>
+      </section>
+    </a>
+
+    <a class="link" href="/products/6">
+      <section class="tarjeta">
+        <h2>Camiseta de Platense</h2>
+        <ul>
+          <img src="/img/platense.webp" alt="">
+          <li>$ 149.999</li>
+          <li>Los productos personalizados no están sujetos a cambios y/o devoluciones.</li>
+        </ul>
+      </section>
+    </a>
+
+    <h2 class="Titulos1">Botines</h2>
+
+    <section class="tarjeta">
+      <a class="link" href="/products/7">
+        <h2>Zona de envío gratis</h2>
+        <img src="/img/botin1.jpg" alt="">
+        <p>Compra ahora</p>
+        <li>$ 149.999</li>
+        <li>Los productos personalizados no están sujetos a cambios y/o devoluciones.</li>
+      </a>
+    </section>
+
+    <a class="link" href="/products/8">
+      <section class="tarjeta">
+        <h2>Zona de envío gratis</h2>
+        <ul>
+          <img src="/img/botin2.jpg" alt="">
+          <li>$ 149.999</li>
+          <li>Los productos personalizados no están sujetos a cambios y/o devoluciones.</li>
+        </ul>
+      </section>
+    </a>
+
+    <section class="tarjeta">
+      <a class="link" href="/products/9">
+        <h2>Zona de envío gratis</h2>
+        <img src="/img/botin3.jpg" alt="">
+        <li>$ 149.999</li>
+        <li>Los productos personalizados no están sujetos a cambios y/o devoluciones.</li>
+      </a>
+    </section>
+
+    <section class="tarjeta">
+      <a class="link" href="/products/10">
+        <h2>Zona de envío gratis</h2>
+        <img src="/img/botin4.jpg" alt="">
+        <li>$ 149.999</li>
+        <li>Los productos personalizados no están sujetos a cambios y/o devoluciones.</li>
+      </a>
+    </section>
+
+    <section class="tarjeta">
+      <a class="link" href="/products/11">
+        <h2>Zona de envío gratis</h2>
+        <img src="/img/botin5.jpg" alt="">
+        <li>$ 149.999</li>
+        <li>Los productos personalizados no están sujetos a cambios y/o devoluciones.</li>
+      </a>
+    </section>
+
+    <h2 class="Titulos1">Guantes</h2>
+
+    <a class="link" href="/products/12">
+      <section class="tarjeta">
+        <h2>Zona de envío gratis</h2>
+        <img src="/img/guantes1.jpg" alt="">
+        <li>$ 149.999</li>
+        <li>Los productos personalizados no están sujetos a cambios y/o devoluciones.</li>
+      </section>
+    </a>
+
+    <a class="link" href="/products/13">
+      <section class="tarjeta">
+        <h2>Zona de envío gratis</h2>
+        <img src="/img/guantes2.jpg" alt="">
+        <li>$ 149.999</li>
+        <li>Los productos personalizados no están sujetos a cambios y/o devoluciones.</li>
+      </section>
+    </a>
+
+    <a class="link" href="/products/14">
+      <section class="tarjeta">
+        <h2>Zona de envío gratis</h2>
+        <img src="/img/guantes3.jpg" alt="">
+        <li>$ 149.999</li>
+        <li>Los productos personalizados no están sujetos a cambios y/o devoluciones.</li>
+      </section>
+    </a>
+
+    <a class="link" href="/products/15">
+      <section class="tarjeta">
+        <h2>Zona de envío gratis</h2>
+        <img src="/img/guantes4.jpg" alt="">
+        <li>$ 149.999</li>
+        <li>Los productos personalizados no están sujetos a cambios y/o devoluciones.</li>
+      </section>
+    </a>
+
+    <a class="link" href="/products/16">
+      <section class="tarjeta">
+        <h2>Zona de envío gratis</h2>
+        <img src="/img/guantes5.jpg" alt="">
+        <li>$ 149.999</li>
+        <li>Los productos personalizados no están sujetos a cambios y/o devoluciones.</li>
+      </section>
+    </a>
+
+    <h2 class="Titulos1">Pelotas</h2>
+
+    <a class="link" href="/products/17">
+      <section class="tarjeta">
+        <h2>Zona de envío gratis</h2>
+        <img src="/img/pelota1.jpg" alt="">
+        <li>$ 149.999</li>
+        <li>Los productos personalizados no están sujetos a cambios y/o devoluciones.</li>
+      </section>
+    </a>
+
+    <a class="link" href="/products/18">
+      <section class="tarjeta">
+        <h2>Zona de envío gratis</h2>
+        <img src="/img/pelota2.jpg" alt="">
+        <li>$ 149.999</li>
+        <li>Los productos personalizados no están sujetos a cambios y/o devoluciones.</li>
+      </section>
+    </a>
+
+    <!-- Lo mas Pedido  -->
+    <h2 class="Titulos1">Los más pedidos</h2>
+
+    <% topProducts.forEach(producto=> { %>
+      <a class="link" href="/products/<%= producto.id %>">
+        <section class="tarjeta">
+          <h2>
+            <%= producto.nombre %>
+          </h2>
+          <ul>
+            <img src="<%= producto.imagen ? producto.imagen : '/img/default-fallback.png' %>"
+              alt="<%= producto.nombre %>">
+
+            <li>$ <%= producto.precio %>
+            </li>
+            <li>Los productos personalizados no están sujetos a cambios y/o devoluciones.</li>
+          </ul>
+        </section>
+      </a>
+      <% }) %>
+
+  </main>
+
+  <%- include('../partials/footer') %>

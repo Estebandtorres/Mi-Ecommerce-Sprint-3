@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styleregistro.css">
+    <title>Login</title>
+</head>
+
+<body>
+    <%- include('../partials/headerlog') %>
+        <main>
+            <div class="todo">
+                <div class="registro-todo">
+                    <div class="registro">
+                        <h1 class="registrate">¡Inicio!</h1>
+                        <input type="text" class="registro" placeholder="Tu email">
+                    </div>
+
+                    <div class="registro">
+                        <input type="password" class="registro" placeholder="Repite tu contraseña">
+
+                        <a href="/index"> <button class="boton">iniciar sesion</button></a>
+                    </div>
+                    <p style="text-align: center;">¿No tienes una cuenta?<a href="/register">Registrarse</a></p>
+                </div>
+            </div>
+        </main>
+
+        <%- include('../partials/footer') %>
+</body>
+
+</html>

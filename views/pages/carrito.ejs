@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<header>
+    <%- include('../partials/header') %>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" href="/css/carrito.css">
+</header>
+
+    
+
+<body>
+
+
+
+<section class="carrito-container">
+    <h1 class="carrito-titulo">🛒 Tu Carrito</h1>
+
+    <% if (items.length === 0) { %>
+
+        <div class="carrito-vacio">
+            <p>Tu carrito está vacío 😕</p>
+            <a href="/index" class="boton boton-volver">← Volver al inicio</a>
+        </div>
+
+    <% } else { %>
+
+        <div class="carrito-items">
+            <% items.forEach(item => { %>
+                <div class="tarjeta_carrito">
+
+                    <img src="<%= item.imagen ? item.imagen : '/img/imagen-error.jpg' %>" alt="<%= item.nombre %>" class="img">
+
+                    <div class="nombrecasaca">
+                        <h2><%= item.nombre %></h2>
+                        <p>Precio unitario: <strong>$<%= item.precio.toLocaleString('es-AR') %></strong></p>
+                    </div>
+
+                    <div class="cantidad-control">
+                        <form action="/cart/decrease/<%= item.productId %>" method="POST">
+                            <button type="submit" class="boton boton-cantidad">➖</button>
+                        </form>
+
+                        <span class="cantidad"><%= item.quantity %></span>
+
+                        <form action="/cart/increase/<%= item.productId %>" method="POST">
+                            <button type="submit" class="boton boton-cantidad">➕</button>
+                        </form>
+                    </div>
+
+                    <div class="precio">
+                        <h2>Subtotal: $<%= item.subtotal.toLocaleString('es-AR') %></h2>
+                    </div>
+
+                </div>
+            <% }) %>
+        </div>
+
+        <div class="carrito-total">
+            <h2>Total: <strong>$<%= total.toLocaleString('es-AR') %></strong></h2>
+        </div>
+
+        <div class="carrito-acciones">
+            <form action="/cart/clear" method="POST">
+                <button type="submit" class="boton-boton-vaciar">Vaciar carrito</button>
+            </form>
+
+            <a href="/checkout" class="boton-boton-comprar">Finalizar compra</a>
+        </div>
+
+    <% } %>
+</section>
+
+<%- include('../partials/footer') %>
+
+</body>
+</html>

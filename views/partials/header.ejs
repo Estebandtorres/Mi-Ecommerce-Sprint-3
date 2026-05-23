@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="/css/style.css">
+<header class="nave">
+    <div class="centro">
+        <div class="logo">
+            <img src="/img/logo.jpeg" alt="logo">
+        </div>
+        <div class="barra">
+            <form class=" barra" type="submit" action="/searchResults" method="GET">
+                <input type="text" name="query" placeholder="Buscar productos..." required>
+            </form>
+        </div>
+    </div>
+
+    <div class="iconos">
+        <div class="icono">
+            <a href="perfil.html"><button class="boton"><img src="/img/usuario.png" width="30px"
+                        height="30px"></button></a>
+        </div>
+    <div class="icono">                                                 
+            <a href="/carrito" class="enlace-carrito">
+                        <button class="boton">
+                            <img src="/img/carrito-de-compras.png" width="30px" height="30px">
+                        </button>
+                    <span class="badge-carrito">
+            <%= Number(totalCarrito) || 0 %>
+                    </span>
+            </a>
+    </div>
+</header>

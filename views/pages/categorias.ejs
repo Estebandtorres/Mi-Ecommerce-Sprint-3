@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= categoriaNombre.charAt(0).toUpperCase() + categoriaNombre.slice(1) %> - Mi E-commerce</title>
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/stylecategorias.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <%- include('../partials/header') %>
+
+    <main class="contenedor main-categoria">
+        
+        <h1 class="titulo-categoria">
+            Categoría: <%= categoriaNombre %>
+        </h1>
+
+        <div class="grilla-categoria">
+            
+            <% if (locals.productos && productos.length > 0) { %>
+                <% productos.forEach(producto => { %>
+                    <a class="link" href="/products/<%= producto.id %>">
+                        <section class="tarjeta">
+                            <h2><%= producto.nombre %></h2>
+                            <img src="<%= producto.imagen ? producto.imagen : '/img/default-fallback.jpg' %>" alt="<%= producto.nombre %>">
+                            <ul>
+                                <li>$ <%= producto.precio.toLocaleString('es-AR') %></li>
+                                <li>Los productos personalizados no están sujetos a cambios y/o devoluciones.</li>
+                            </ul>
+                        </section>
+                    </a>
+                <% }) %>
+            <% } else { %>
+                <p class="mensaje-vacio-categoria">
+                    ¡Ups! Todavía no tenemos productos disponibles en la categoría <strong>"<%= categoriaNombre %>"</strong>. 
+                    <br><br>
+                    <a href="/index" class="enlace-volver-categoria">Volver al inicio</a>
+                </p>
+            <% } %>
+
+        </div>
+
+    </main>
+
+    <%- include('../partials/footer') %>
+
+</body>
+</html>

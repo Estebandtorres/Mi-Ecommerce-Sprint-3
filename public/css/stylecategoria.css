@@ -1,0 +1,25 @@
+.main-categoria {
+    min-height: 60vh;
+    padding-top: 40px;
+}
+
+.titulo-categoria {
+    text-transform: capitalize;
+    margin-bottom: 30px;
+}
+
+.grilla-categoria {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.mensaje-vacio-categoria {
+    color: #666;
+    font-size: 1.2rem;
+}
+
+.enlace-volver-categoria {
+    color: #0056b3;
+    text-decoration: underline;
+}

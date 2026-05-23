@@ -1,0 +1,89 @@
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/styledescri.css">
+<header class="nave">
+     <div class="centro">
+          <div class="logo">
+               <img src="/img/logo.jpeg" alt="logo">
+          </div>
+
+          <div class="barra">
+               <form class=" barra" type="submit" action="/searchResults" method="GET">
+                    <input type="text" name="query" placeholder="Buscar productos..." required>
+               </form>
+          </div>
+     </div>
+
+     <div class="iconos">
+          <div class="icono">
+               <a href="perfil.html"><button class="boton"><img src="/img/usuario.png" width="30px"
+                              height="30px"></button></a>
+          </div>
+          <div class="icono">
+               <a href="/carrito"><button class="boton"><img src="/img/carrito-de-compras.png" width="30px"
+                              height="30px"></button></a>
+          </div>
+     </div>
+</header>
+<%- include('../partials/header') %>
+
+     <div class="tarjeta_descri">
+          <img src="<%= producto.imagen ? producto.imagen : '/img/imagen-error.jpg' %>" alt="<%= producto.nombre %>">
+
+          <div class="info">
+               <h1>
+                    <%= producto.nombre %>
+               </h1>
+               <p>Precio: <strong>$<%= producto.precio.toLocaleString('es-AR') %></strong></p>
+               <p>Este producto esta hecho con materiales de alta calidad para garantizar rendimiento y comodidad
+                    diaria.</p>
+               <p>Nota: Los productos personalizados no están sujetos a cambios y/o devoluciones.</p>
+               <a class="volver" href="/index">← Volver al inicio</a>
+
+               <% if (producto.stock===0) { %>
+                    <span
+                         style="background-color: red; color: white; padding: 5px; border-radius: 5px; font-weight: bold; margin-left: 10px;">Sin
+                         stock</span>
+                    <button type="button" class="volver" disabled style="opacity: 0.5; cursor: not-allowed;">🛒 Agregar
+                         al carrito</button>
+                    <% } else { %>
+                         <form action="/cart/add/<%= producto.id %>" method="POST" style="display:inline;">
+                              <button type="submit" class="volver">🛒 Agregar al carrito</button>
+                         </form>
+                         <% } %>
+          </div>
+     </div>
+
+     <hr class="separador-relacionados">
+
+     <div class="contenedor-relacionados">
+          <h2 class="titulo-relacionados">Productos relacionados</h2>
+
+          <% if (locals.relacion && relacion.length> 0) { %>
+               <div class="contenedor grilla-relacionados">
+
+                    <% relacion.forEach(relacion=> { %>
+                         <a class="link" href="/products/<%= relacion.id %>">
+                              <section class="tarjeta">
+                                   <h2>
+                                        <%= relacion.nombre %>
+                                   </h2>
+                                   <img src="<%= relacion.imagen ? relacion.imagen : '/img/imagen-error.jpg' %>"
+                                        alt="<%= relacion.nombre %>">
+                                   <ul>
+                                        <li>$ <%= relacion.precio.toLocaleString('es-AR') %>
+                                        </li>
+                                        <li>Los productos personalizados no están sujetos a cambios y/o devoluciones.
+                                        </li>
+                                   </ul>
+                              </section>
+                         </a>
+                         <% }) %>
+
+               </div>
+               <% } else { %>
+                    <p class="mensaje-vacio">No hay productos relacionados disponibles en este momento para esta
+                         categoría.</p>
+                    <% } %>
+     </div>
+
+     <%- include('../partials/footer') %>
