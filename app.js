@@ -5,7 +5,16 @@ const app = express();
 const productRoutes = require('./routes/productRoute');
 const cartRoutes = require('./routes/cartRoute');
 require('./db/database');
+const cors = require('cors');
+const apiProductsRouter = require('./routes/api/productsApiRoutes');
+const apiCategoriesRouter = require('./routes/api/categoriesApiRoutes');
+const apiStatsRouter = require('./routes/api/statsApiRoutes');
 
+app.use('/api/products', apiProductsRouter);
+app.use('/api/categories', apiCategoriesRouter);
+app.use('/api/stats', apiStatsRouter);
+app.use(cors());
+app.use(express.json());
 
 app.set('view engine', 'ejs');
 
