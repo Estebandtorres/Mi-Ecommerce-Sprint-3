@@ -28,10 +28,25 @@ const productsApiController = {
     },
 
     create: (req, res) => {
+    try {
+        // 1. Validar que recibimos datos
+        if (!req.body || Object.keys(req.body).length === 0) {
+            return res.status(400).json({ error: "No se enviaron datos para el producto" });
+        }
+
+        // 2. Llamar al servicio
         const newProduct = productsService.create(req.body);
+
+        // 3. Transformar los datos igual que en tus otros métodos
         const { imagen, ...rest } = newProduct;
         res.status(201).json({ ...rest, img: imagen });
-    },
+        
+    } catch (error) {
+        // 4. Capturar errores de base de datos
+        console.error("Error al crear:", error);
+        res.status(500).json({ error: "Error interno al guardar el producto" });
+    }
+},
 
     update: (req, res) => {
         const product = productsService.getById(req.params.id);
