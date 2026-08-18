@@ -1,4 +1,3 @@
-
 const express = require('express');
 const session = require('express-session');
 const app = express();
@@ -10,7 +9,7 @@ const apiProductsRouter = require('./routes/api/productsApiRoutes');
 const apiCategoriesRouter = require('./routes/api/categoriesApiRoutes');
 const apiStatsRouter = require('./routes/api/statsApiRoutes');
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: '50mb' }));
 
 app.use('/api/products', apiProductsRouter);
 app.use('/api/categories', apiCategoriesRouter);
@@ -19,7 +18,7 @@ app.use('/api/stats', apiStatsRouter);
 app.set('view engine', 'ejs');
 
 
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ limit: '50mb', extended: false }));
 
 
 app.use(session({
