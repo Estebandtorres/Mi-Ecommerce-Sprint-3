@@ -1,13 +1,11 @@
 const productsService = require('../../services/productsService');
 const categoriesService = require('../../services/categoriesService');
-
 const statsApiController = {
     getStats: (req, res) => {
         try {
             const totalProducts = productsService.count();
             const totalCategories = categoriesService.count();
-
-            res.status(200).json({
+             res.status(200).json({
                 totalProducts: totalProducts,
                 totalCategories: totalCategories
             });
@@ -16,5 +14,4 @@ const statsApiController = {
         }
     }
 };
-
 module.exports = statsApiController;

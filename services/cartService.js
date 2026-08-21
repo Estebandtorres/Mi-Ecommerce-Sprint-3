@@ -1,8 +1,6 @@
 const db = require('../db/database')
 
 const cartService = {
-
-    // Inicializar carrito en sesión si no existe
     initCart: (session) => {
         if (!session.cart) {
             session.cart = [];
