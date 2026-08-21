@@ -6,14 +6,12 @@ const normalizeId = (idParam, res) => {
         res.status(400).send('Error 400: Solicitud incorrecta. El ID del producto debe ser un número.');
         return null;
     }
-
     const product = productsService.getById(parsedId);
     if (!product) {
         res.status(404).send('Error 404: No se encontro el producto');
         return null;
     }
-
-    return product;
+ return product;
 };
 
 const productController = {

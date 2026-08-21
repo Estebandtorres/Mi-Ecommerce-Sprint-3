@@ -43,7 +43,6 @@ try {
     console.error('Error durante la migración:', error);
 }
 
-
 const total = db.prepare('SELECT COUNT(*) as total FROM products').get();
 console.log(` Total de productos en la base de datos: ${total.total}`);
 
