@@ -45,15 +45,15 @@ const productsService = {
         return db.prepare('SELECT * FROM products').all();
     },
 
-    create: (data) => {
-        const stmt = db.prepare('INSERT INTO products (nombre, precio, imagen, destacado, categoria, stock) VALUES (?, ?, ?, ?, ?, ?)');
-        const result = stmt.run(data.nombre, data.precio, data.imagen || '', data.destacado || 0, data.categoria || '', data.stock || 0);
+create: (data) => {
+        const stmt = db.prepare('INSERT INTO products (nombre, precio, imagen, destacado, categoria, stock, descripcion) VALUES (?, ?, ?, ?, ?, ?, ?)');
+        const result = stmt.run(data.nombre, data.precio, data.imagen || '', data.destacado || 0, data.categoria || '', data.stock || 0, data.descripcion || '');
         return db.prepare('SELECT * FROM products WHERE id = ?').get(result.lastInsertRowid);
     },
 
     update: (id, data) => {
-        const stmt = db.prepare('UPDATE products SET nombre = ?, precio = ?, imagen = ?, destacado = ?, categoria = ?, stock = ? WHERE id = ?');
-        stmt.run(data.nombre, data.precio, data.imagen || '', data.destacado || 0, data.categoria || '', data.stock || 0, id);
+        const stmt = db.prepare('UPDATE products SET nombre = ?, precio = ?, imagen = ?, destacado = ?, categoria = ?, stock = ?, descripcion = ? WHERE id = ?');
+        stmt.run(data.nombre, data.precio, data.imagen || '', data.destacado || 0, data.categoria || '', data.stock || 0, data.descripcion || '', id);
         return db.prepare('SELECT * FROM products WHERE id = ?').get(id);
     },
 

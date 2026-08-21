@@ -13,9 +13,10 @@ CREATE TABLE IF NOT EXISTS products (
     nombre TEXT NOT NULL,
     precio REAL NOT NULL,
     imagen TEXT,
-    destacado INTEGER DEFAULT 0, 
+    destacado INTEGER DEFAULT 0,
     categoria TEXT,
-    stock INTEGER DEFAULT 0
+    stock INTEGER DEFAULT 0,
+    descripcion TEXT 
 );
 
 

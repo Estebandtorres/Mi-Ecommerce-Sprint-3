@@ -32,22 +32,21 @@ const productController = {
         res.render('pages/checkout');
     },
 
-    index: (req, res) => {
-
+  index: (req, res) => {
         try {
             const sugeridos = productsService.getSugeridos();
             const top10 = productsService.getMasPedidos();
 
             res.render('pages/index', {
                 topProducts: top10,
-                sugeridos: sugeridos
+                sugeridos: sugeridos,
             });
 
         } catch (error) {
             console.error("Error cargando los productos en la Home:", error);
             res.render('pages/index', {
                 topProducts: [],
-                sugeridos: []
+                sugeridos: [],
             });
         }
     },
